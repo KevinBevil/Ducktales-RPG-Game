@@ -21,54 +21,66 @@
    <div class="container" id="heroes">
       <div class="row">
          <div class="col-lg-12">
-            <h2>Choose Your Hero</h2>
+            <h2>Choose Your Character</h2>
          </div>
       </div>
+
       <div class="row">
-         <div class="col-lg-2">
-            <h6>Scrooge McDuck<h6>
+         <div class="col-lg-2 character" id="scrooge">
+            <div id="scrooge-hp">
+               <h6>Scrooge McDuck<h6>
+            </div>
          </div>
-         <div class="col-lg-2">
-            <h6>Launchpad McQuack<h6>
+         <div class="col-lg-2 character" id="launchpad">
+            <div id="launchpad-hp">
+               <h6>Launchpad McQuack<h6>
+            </div>
          </div>
-         <div class="col-lg-2">
-            <h6>Gyro Gearloose<h6>
+         <div class="col-lg-2 character" id="magica">
+            <div id="magica-hp">
+               <h6>Magica De Spell<h6>
+            </div>
          </div>
-         <div class="col-lg-2">
-            <h6>Gladstone Gander<h6>
+         <div class="col-lg-2 character" id="flintheart">
+            <div id="flintheart-hp">
+               <h6>Flintheart Glomgold<h6>
+            </div>
          </div>
       </div>
    </div>
-   <div class="container" id="villians">
+
+   <div class="container">
       <div class="row">
          <div class="col-lg-12">
-            <h2>Choose Your Enemy</h2>
+            <h2>Choose Your Defender</h2>
+            <div class="d-flex" id="defenders"></div>
          </div>
       </div>
-      <div class="row">
-         <div class="col-lg-2">
-            <h6>Magica De Spell<h6>
-         </div>
-         <div class="col-lg-2">
-            <h6>Ma Beagle<h6>
-         </div>
-         <div class="col-lg-2">
-            <h6>Flintheart Glomgold<h6>
-         </div>
-      </div>
+
       <div class="container" id="battle-realm">
          <div class="row">
-            <div class="col-lg-2">
-               <h6>Attacker<h6>
+            <div class="col-lg-2 d-flex">
+               <h4 id="attacker">Attacker</h4>
             </div>
             <button type="button" class="btn btn-danger"
-               id="attack">Attack</button>
-            <div class="col-lg-2">
-               <h6>Defender<h6>
+               id="attack-button">Attack</button>
+            <div class="col-lg-2 d-flex" id="defender">
+               <h4>Defender</h4>
             </div>
          </div>
       </div>
    </div>
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+   <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+   <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
    <script src="assets/javascript/game.js">
    </script>
 </body>

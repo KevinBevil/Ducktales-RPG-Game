@@ -1,16 +1,49 @@
+body {
+   background-image: url("../images/DKBG.jpg");
+   color: whitesmoke;
+   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
 
-.col-lg-2 {
+.character {
    width: 200px;
    height: 150px;
    margin: 20px;
    text-align: center;
+   border: 5px solid rgb(110, 107, 53);
+   min-width: 200px;
+   position: relative;
 }
-#attack {
+h4 {
+   margin-right:20px;
+}
+#attack-button {
    height: 40px;
+   margin-left: 90px;
 }
+
 h2 {
    margin: 20px;
 }
+
 h1 {
    text-align: center;
+}
+
+#defenders {
+   margin: 0px;
+}
+#scrooge {
+   background-image: url("../images/scrooge.png");
+}
+
+#launchpad {
+   background-image: url("../images/launchpad.jpg");
+}
+
+#magica {
+   background-image: url("../images/Magica.png");
+}
+
+#flintheart {
+   background-image: url("../images/flintheart.jpg");
 }
