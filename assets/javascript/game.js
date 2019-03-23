@@ -54,18 +54,73 @@ var characters = {
    }
 }
 $("#scrooge").on("click", function() {
-   if (attacker !== "x") {
-      return;
-   }
+
    if (attacker === "x") {
       attacker = "Scrooge McDuck";
       $("#scrooge").appendTo($("#attacker"));
       $("#launchpad").appendTo($("#defenders"));
       $("#magica").appendTo($("#defenders"));
       $("#flintheart").appendTo($("#defenders"));
+      $("#choose-att").css("display", "none");
    }
    if (defender === "y" && attacker !== "Scrooge McDuck") {
       defender = "Scrooge McDuck";
       $("#scrooge").appendTo($("#defender"));
+      $("#choose-def").css("display", "none");
+
+   }
+});
+$("#launchpad").on("click", function() {
+
+   if (attacker === "x") {
+      attacker = "Launchpad McQuack";
+      $("#launchpad").appendTo($("#attacker"));
+      $("#scrooge").appendTo($("#defenders"));
+      $("#magica").appendTo($("#defenders"));
+      $("#flintheart").appendTo($("#defenders"));
+      $("#choose-att").css("display", "none");
+
+   }
+   if (defender === "y" && attacker !== "Launchpad McQuack") {
+      defender = "Launchpad McQuack";
+      $("#launchpad").appendTo($("#defender"));
+      $("#choose-def").css("display", "none");
+
+   }
+});
+$("#magica").on("click", function() {
+
+   if (attacker === "x") {
+      attacker = "Magica De Spell";
+      $("#magica").appendTo($("#attacker"));
+      $("#launchpad").appendTo($("#defenders"));
+      $("#scrooge").appendTo($("#defenders"));
+      $("#flintheart").appendTo($("#defenders"));
+      $("#choose-att").css("display", "none");
+
+   }
+   if (defender === "y" && attacker !== "Magica De Spell") {
+      defender = "Magica De Spell";
+      $("#magica").appendTo($("#defender"));
+      $("#choose-def").css("display", "none");
+
+   }
+});
+$("#flintheart").on("click", function() {
+
+   if (attacker === "x") {
+      attacker = "Flintheart Glomgold";
+      $("#flintheart").appendTo($("#attacker"));
+      $("#magica").appendTo($("#defenders"));
+      $("#launchpad").appendTo($("#defenders"));
+      $("#scrooge").appendTo($("#defenders"));
+      $("#choose-att").css("display", "none");
+
+   }
+   if (defender === "y" && attacker !== "Flintheart Glomgold") {
+      defender = "Flintheart Glomgold";
+      $("#flintheart").appendTo($("#defender"));
+      $("#choose-def").css("display", "none");
+
    }
 });
