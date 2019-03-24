@@ -29,53 +29,59 @@ var defenderPicked = false;
 var attacker = "x";
 var defender = "y";
 
-var characters = {
-   scrooge: {
-      name: "Scrooge McDuck",
-      hp: 180,
-      aPower: 3,
-      cAPower: 4,
-   },
-   launchpad: {
-      name: "Launchpad McQuack",
-      hp: 200,
-      aPower: 2,
-      cAPower: 8,
-   },
-   magica: {
-      name: "Magica De Spell",
-      hp: 150,
-      aPower: 12,
-      cAPower: 5,
-   },
-   flintheart: {
-      name: "Flintheart Glomgold",
-      hp: 190,
-      aPower: 9,
-      cAPower: 7,
-   }
+var fightSound = new Audio("assets/sounds/punch.mp3");
+
+
+var scrooge = {
+   name: "Scrooge McDuck",
+   hp: 180,
+   aPower: 3,
+   cAPower: 4,
+   bAttackPower: 3
 }
-$("#scrooge").on("click", function() {
+var launchpad = {
+   name: "Launchpad McQuack",
+   hp: 200,
+   aPower: 2,
+   cAPower: 8,
+   bAttackPower: 2
+}
+var magica = {
+   name: "Magica De Spell",
+   hp: 150,
+   aPower: 12,
+   cAPower: 5,
+   bAttackPower: 12
+}
+var flintheart = {
+   name: "Flintheart Glomgold",
+   hp: 190,
+   aPower: 9,
+   cAPower: 7,
+   bAttackPower: 9
+}
+
+$("#scrooge").on("click", function () {
 
    if (attacker === "x") {
-      attacker = "Scrooge McDuck";
+      attacker = scrooge;
       $("#scrooge").appendTo($("#attacker"));
       $("#launchpad").appendTo($("#defenders"));
       $("#magica").appendTo($("#defenders"));
       $("#flintheart").appendTo($("#defenders"));
       $("#choose-att").css("display", "none");
    }
-   if (defender === "y" && attacker !== "Scrooge McDuck") {
-      defender = "Scrooge McDuck";
+   if (defender === "y" && attacker !== scrooge) {
+      defender = scrooge;
       $("#scrooge").appendTo($("#defender"));
       $("#choose-def").css("display", "none");
 
    }
 });
-$("#launchpad").on("click", function() {
+$("#launchpad").on("click", function () {
 
    if (attacker === "x") {
-      attacker = "Launchpad McQuack";
+      attacker = launchpad;
       $("#launchpad").appendTo($("#attacker"));
       $("#scrooge").appendTo($("#defenders"));
       $("#magica").appendTo($("#defenders"));
@@ -83,17 +89,17 @@ $("#launchpad").on("click", function() {
       $("#choose-att").css("display", "none");
 
    }
-   if (defender === "y" && attacker !== "Launchpad McQuack") {
-      defender = "Launchpad McQuack";
+   if (defender === "y" && attacker !== launchpad) {
+      defender = launchpad;
       $("#launchpad").appendTo($("#defender"));
       $("#choose-def").css("display", "none");
 
    }
 });
-$("#magica").on("click", function() {
+$("#magica").on("click", function () {
 
    if (attacker === "x") {
-      attacker = "Magica De Spell";
+      attacker = magica;
       $("#magica").appendTo($("#attacker"));
       $("#launchpad").appendTo($("#defenders"));
       $("#scrooge").appendTo($("#defenders"));
@@ -101,16 +107,16 @@ $("#magica").on("click", function() {
       $("#choose-att").css("display", "none");
 
    }
-   if (defender === "y" && attacker !== "Magica De Spell") {
-      defender = "Magica De Spell";
+   if (defender === "y" && attacker !== magica) {
+      defender = magica;
       $("#magica").appendTo($("#defender"));
       $("#choose-def").css("display", "none");
 
    }
 });
-$("#flintheart").on("click", function() {
+$("#flintheart").on("click", function () {
    if (attacker === "x") {
-      attacker = "Flintheart Glomgold";
+      attacker = flintheart;
       $("#flintheart").appendTo($("#attacker"));
       $("#magica").appendTo($("#defenders"));
       $("#launchpad").appendTo($("#defenders"));
@@ -118,9 +124,101 @@ $("#flintheart").on("click", function() {
       $("#choose-att").css("display", "none");
 
    }
-   if (defender === "y" && attacker !== "Flintheart Glomgold") {
-      defender = "Flintheart Glomgold";
+   if (defender === "y" && attacker !== flintheart) {
+      defender = flintheart;
       $("#flintheart").appendTo($("#defender"));
       $("#choose-def").css("display", "none");
    }
+});
+
+
+function fight(player1, player2) {
+   if (attacker === "x" || defender === "y") {
+      return
+   }
+   player1.hp = player1.hp - player2.cAPower;
+   player2.hp = player2.hp - player1.aPower;
+
+   switch (player1) {
+      case scrooge:
+         $("#scrooge-hp").text(scrooge.hp)
+         break;
+      case magica:
+         $("#magica-hp").text(magica.hp)
+         break;
+      case launchpad:
+         $("#launchpad-hp").text(launchpad.hp)
+         break;
+      case flintheart:
+         $("#flintheart-hp").text(flintheart.hp)
+         break;
+   }
+   switch (player2) {
+      case scrooge:
+         $("#scrooge-hp").text(scrooge.hp)
+         break;
+      case magica:
+         $("#magica-hp").text(magica.hp)
+         break;
+      case launchpad:
+         $("#launchpad-hp").text(launchpad.hp)
+         break;
+      case flintheart:
+         $("#flintheart-hp").text(flintheart.hp)
+         break;
+   }
+
+
+   $(".game-play").text("You attacked " + player2.name + " for "
+      + player1.aPower + " damage.  \n " + player2.name
+      + " attacked you for " + player2.cAPower + " damage.");
+
+   player1.aPower = player1.aPower + player1.bAttackPower;
+
+
+   if (player1.hp <= 0) {
+      $(".game-play").text("Your health points have dropped to or below 0.  You Lose!");
+   }
+}
+console.log(attacker);
+
+$("#attack-button").on("click", function () {
+   fightSound.play();
+   if (attacker === scrooge && defender === magica) {
+      fight(scrooge, magica);
+   }
+   if (attacker === magica && defender === scrooge) {
+      fight(magica, scrooge);
+   }
+   if (attacker === scrooge && defender === flintheart) {
+      fight(scrooge, flintheart);
+   }
+   if (attacker === flintheart && defender === scrooge) {
+      fight(flintheart, scrooge);
+   }
+   if (attacker === flintheart && defender === magica) {
+      fight(flintheart, magica);
+   }
+   if (attacker === magica && defender === flintheart) {
+      fight(magica, flintheart);
+   }
+   if (attacker === launchpad && defender === scrooge) {
+      fight(launchpad, scrooge);
+   }
+   if (attacker === scrooge && defender === launchpad) {
+      fight(scrooge, launchpad);
+   }
+   if (attacker === launchpad && defender === magica) {
+      fight(launchpad, magica);
+   }
+   if (attacker === magica && defender === launchpad) {
+      fight(magica, launchpad);
+   }
+   if (attacker === flintheart && defender === launchpad) {
+      fight(flintheart, launchpad);
+   }
+   if (attacker === launchpad && defender === flintheart) {
+      fight(launchpad, flintheart);
+   }
+
 });

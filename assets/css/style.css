@@ -2,11 +2,12 @@ body {
    background-image: url("../images/DKBG.jpg");
    color: whitesmoke;
    text-shadow: -1px -1px 0 #000, -1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+   font-family: 'Bangers', cursive;
 }
 
 .character {
-   width: 200px;
-   height: 150px;
+   width: 180px;
+   height: 135px;
    margin: 20px;
    text-align: center;
    border: 5px solid rgb(232,200,72);
@@ -22,11 +23,13 @@ h4 {
    margin-right:20px;
 }
 #attack-button {
+   font-size: 1.2em;
    height: 40px;
    margin-left: 90px;
    margin-top: 100px;
 }
-
+h6 {
+}
 h2 {
    margin: 20px;
 }
@@ -44,8 +47,15 @@ h1 {
    text-shadow:-1px -1px 0 #000;
 }
 span {
+   padding-left: 3px;
+   padding-right: 5px;
+   padding-top: 2px;
+   font-family: 'Bangers', cursive;
    position: absolute;
-   top: 120px;
+   top: 111px;
+   background-color: rgb(232,200,72);
+   font-size: 110%;
+   line-height: 90%;
 }
 #defenders {
    margin: 0px;
