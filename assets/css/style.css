@@ -9,7 +9,7 @@ body {
    height: 150px;
    margin: 20px;
    text-align: center;
-   border: 5px solid rgb(110, 107, 53);
+   border: 5px solid rgb(232,200,72);
    min-width: 200px;
    position: relative;
 }
@@ -43,7 +43,10 @@ h1 {
    left: 20px;
    text-shadow:-1px -1px 0 #000;
 }
-
+span {
+   position: absolute;
+   top: 120px;
+}
 #defenders {
    margin: 0px;
 }

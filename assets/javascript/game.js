@@ -22,6 +22,8 @@
 // 2. Is defender defeated?
 // a. Remove Defender
 // b. Allow new enemy selection
+
+// Booleans to know if attacker and defender have been chosen
 var attackerPicked = false;
 var defenderPicked = false;
 var attacker = "x";
@@ -107,7 +109,6 @@ $("#magica").on("click", function() {
    }
 });
 $("#flintheart").on("click", function() {
-
    if (attacker === "x") {
       attacker = "Flintheart Glomgold";
       $("#flintheart").appendTo($("#attacker"));
@@ -121,6 +122,5 @@ $("#flintheart").on("click", function() {
       defender = "Flintheart Glomgold";
       $("#flintheart").appendTo($("#defender"));
       $("#choose-def").css("display", "none");
-
    }
 });
