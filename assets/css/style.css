@@ -47,8 +47,10 @@ h1 {
    text-shadow:-1px -1px 0 #000;
 }
 span {
+   font-size: 15px;
+   letter-spacing: 1px;
    padding-left: 3px;
-   padding-right: 5px;
+   padding-right: 4px;
    padding-top: 2px;
    font-family: 'Bangers', cursive;
    position: absolute;
@@ -74,4 +76,7 @@ span {
 
 #flintheart {
    background-image: url("../images/flintheart.jpg");
+}
+.game-play {
+   font-size: 20px;
 }
