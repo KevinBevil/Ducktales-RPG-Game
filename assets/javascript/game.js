@@ -34,28 +34,28 @@ var fightSound = new Audio("assets/sounds/punch.mp3");
 
 var scrooge = {
    name: "Scrooge McDuck",
-   hp: 180,
-   aPower: 3,
+   hp: 120,
+   aPower: 8,
    cAPower: 4,
-   bAttackPower: 3
+   bAttackPower: 8
 }
 var launchpad = {
    name: "Launchpad McQuack",
-   hp: 200,
-   aPower: 2,
+   hp: 100,
+   aPower: 5,
    cAPower: 8,
-   bAttackPower: 2
+   bAttackPower: 5
 }
 var magica = {
    name: "Magica De Spell",
-   hp: 150,
-   aPower: 12,
-   cAPower: 5,
-   bAttackPower: 12
+   hp: 180,
+   aPower: 15,
+   cAPower: 25,
+   bAttackPower: 15
 }
 var flintheart = {
    name: "Flintheart Glomgold",
-   hp: 190,
+   hp: 150,
    aPower: 9,
    cAPower: 7,
    bAttackPower: 9
