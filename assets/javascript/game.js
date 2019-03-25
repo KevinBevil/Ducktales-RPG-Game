@@ -1,29 +1,4 @@
-// Functionality
-// 1display characters to Select
-//    a. Create characters object with character sub-objects
-//    (Object: "Character" -- property: scrooge: )
-// 2keep selection remove extras
-// 3place extras in enemies section
-// 4selected enemy moves to defender ... remaining enemies stay
-// 5listen for attack click
 
-// Attack Functionality
-// 1compare attack rating to defender rating
-// 2determine damage
-// 3update attack results
-// 4update HP
-// 5check outcome
-
-// Check Outcome
-// 1. Is attacker defeated?
-// a. Game over.
-// b. Display Restart Button
-
-// 2. Is defender defeated?
-// a. Remove Defender
-// b. Allow new enemy selection
-
-// Booleans to know if attacker and defender have been chosen
 var attackerPicked = false;
 var defenderPicked = false;
 var attacker = "x";
@@ -75,11 +50,9 @@ $("#scrooge").on("click", function () {
       defender = scrooge;
       $("#scrooge").appendTo($("#defender"));
       $("#choose-def").css("display", "none");
-
    }
 });
 $("#launchpad").on("click", function () {
-
    if (attacker === "x") {
       attacker = launchpad;
       $("#launchpad").appendTo($("#attacker"));
@@ -87,17 +60,14 @@ $("#launchpad").on("click", function () {
       $("#magica").appendTo($("#defenders"));
       $("#flintheart").appendTo($("#defenders"));
       $("#choose-att").css("display", "none");
-
    }
    if (defender === "y" && attacker !== launchpad) {
       defender = launchpad;
       $("#launchpad").appendTo($("#defender"));
       $("#choose-def").css("display", "none");
-
    }
 });
 $("#magica").on("click", function () {
-
    if (attacker === "x") {
       attacker = magica;
       $("#magica").appendTo($("#attacker"));
@@ -105,13 +75,11 @@ $("#magica").on("click", function () {
       $("#scrooge").appendTo($("#defenders"));
       $("#flintheart").appendTo($("#defenders"));
       $("#choose-att").css("display", "none");
-
    }
    if (defender === "y" && attacker !== magica) {
       defender = magica;
       $("#magica").appendTo($("#defender"));
       $("#choose-def").css("display", "none");
-
    }
 });
 $("#flintheart").on("click", function () {
@@ -122,7 +90,6 @@ $("#flintheart").on("click", function () {
       $("#launchpad").appendTo($("#defenders"));
       $("#scrooge").appendTo($("#defenders"));
       $("#choose-att").css("display", "none");
-
    }
    if (defender === "y" && attacker !== flintheart) {
       defender = flintheart;
@@ -133,8 +100,15 @@ $("#flintheart").on("click", function () {
 
 
 function fight(player1, player2) {
-   if (attacker === "x" || defender === "y") {
+   if (player1.hp <= 0) {
       return
+   }
+
+   if (attacker === "x" || defender === "y") {
+      return;
+   }
+   if (player1.hp === 0) {
+      return;
    }
    player1.hp = player1.hp - player2.cAPower;
    player2.hp = player2.hp - player1.aPower;
@@ -175,10 +149,87 @@ function fight(player1, player2) {
 
    player1.aPower = player1.aPower + player1.bAttackPower;
 
-
    if (player1.hp <= 0) {
-      $(".game-play").text("Your health points have dropped to or below 0.  You Lose!");
+      player1.hp = 0;
+
+      $(".game-play").text("You are out of health points.  You Lose!");
    }
+   if (player2.hp <= 0) {
+      switch (player2) {
+         case scrooge:
+            $("#scrooge").detach();
+            if ($("#launchpad").length !== 0 && attacker != launchpad) {
+               defender = launchpad;
+               $("#launchpad").appendTo("#defender");
+               launchpad.hp = 100;
+            }
+            else if ($("#magica").length !== 0 && attacker != magica) {
+               defender = magica;
+               $("#magica").appendTo("#defender");
+            }
+            else if ($("#flintheart").length !== 0 && attacker != flintheart) {
+               defender = flintheart;
+               $("#flintheart").appendTo("#defender");
+            }
+            $(".game-play").text("You defeated the defender!");
+            break;
+         case launchpad:
+            $("#launchpad").detach();
+            if ($("#scrooge").length !== 0 && attacker != scrooge) {
+               defender = scrooge;
+               $("#scrooge").appendTo("#defender");
+            }
+            else if ($("#magica").length !== 0 && attacker != magica) {
+               defender = magica;
+               $("#magica").appendTo("#defender");
+            }
+            else if ($("#flintheart").length !== 0 && attacker != flintheart) {
+               defender = flintheart;
+               $("#flintheart").appendTo("#defender");
+            }
+            $(".game-play").text("You defeated the defender!");
+            break;
+         case magica:
+            $("#magica").detach();
+            if ($("#launchpad").length !== 0 && attacker != launchpad) {
+               defender = launchpad;
+               $("#launchpad").appendTo("#defender");
+            }
+            else if ($("#scrooge").length !== 0 && attacker != scrooge) {
+               defender = scrooge;
+               $("#scrooge").appendTo("#defender");
+            }
+            else if ($("#flintheart").length !== 0 && attacker != flintheart) {
+               defender = flintheart;
+               $("#flintheart").appendTo("#defender");
+            }
+            $(".game-play").text("You defeated the defender!");
+            break;
+         case flintheart:
+            $("#flintheart").detach();
+            if ($("#launchpad").length !== 0 && attacker != launchpad) {
+               defender = launchpad;
+               $("#launchpad").appendTo("#defender");
+            }
+            else if ($("#magica").length !== 0 && attacker != magica) {
+               defender = magica;
+               $("#magica").appendTo("#defender");
+            }
+            else if ($("#scrooge").length !== 0 && attacker != scrooge) {
+               defender = scrooge;
+               $("#scrooge").appendTo("#defender");
+            }
+            $(".game-play").text("You defeated the defender!");
+            break;
+      }
+      if (player1.hp <= 0) {
+         player1.hp = 0;
+
+         $(".game-play").text("You are out of health points.  You Lose!");
+      }
+   }
+
+
 }
 console.log(attacker);
 
