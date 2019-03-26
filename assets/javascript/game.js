@@ -110,6 +110,9 @@ function fight(player1, player2) {
    if (player1.hp === 0) {
       return;
    }
+   if (player2.hp <= 0) {
+      return;
+   }
    player1.hp = player1.hp - player2.cAPower;
    player2.hp = player2.hp - player1.aPower;
 
@@ -161,7 +164,6 @@ function fight(player1, player2) {
             if ($("#launchpad").length !== 0 && attacker != launchpad) {
                defender = launchpad;
                $("#launchpad").appendTo("#defender");
-               launchpad.hp = 100;
             }
             else if ($("#magica").length !== 0 && attacker != magica) {
                defender = magica;
@@ -170,8 +172,10 @@ function fight(player1, player2) {
             else if ($("#flintheart").length !== 0 && attacker != flintheart) {
                defender = flintheart;
                $("#flintheart").appendTo("#defender");
+            } else {
+               $(".game-play").text("You win!");
             }
-            $(".game-play").text("You defeated the defender!");
+            $(".game-play").text("You defeated the defender! Play the next opponent!");
             break;
          case launchpad:
             $("#launchpad").detach();
@@ -186,8 +190,10 @@ function fight(player1, player2) {
             else if ($("#flintheart").length !== 0 && attacker != flintheart) {
                defender = flintheart;
                $("#flintheart").appendTo("#defender");
+            } else {
+               $(".game-play").text("You win!");
             }
-            $(".game-play").text("You defeated the defender!");
+            $(".game-play").text("You defeated the defender! Play next defender!");
             break;
          case magica:
             $("#magica").detach();
@@ -202,8 +208,10 @@ function fight(player1, player2) {
             else if ($("#flintheart").length !== 0 && attacker != flintheart) {
                defender = flintheart;
                $("#flintheart").appendTo("#defender");
+            } else {
+               $(".game-play").text("You win!");
             }
-            $(".game-play").text("You defeated the defender!");
+            $(".game-play").text("You defeated the defender! Play next defender!");
             break;
          case flintheart:
             $("#flintheart").detach();
@@ -218,8 +226,10 @@ function fight(player1, player2) {
             else if ($("#scrooge").length !== 0 && attacker != scrooge) {
                defender = scrooge;
                $("#scrooge").appendTo("#defender");
+            } else {
+               $(".game-play").text("You win!")
             }
-            $(".game-play").text("You defeated the defender!");
+            $(".game-play").text("You defeated the defender! Play next defender!");
             break;
       }
       if (player1.hp <= 0) {
@@ -271,5 +281,7 @@ $("#attack-button").on("click", function () {
    if (attacker === launchpad && defender === flintheart) {
       fight(launchpad, flintheart);
    }
-
+   $('#reload').click(function() {
+      location.reload();
+  });
 });
